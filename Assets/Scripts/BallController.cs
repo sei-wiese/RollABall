@@ -11,22 +11,24 @@ public class BallController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector2 inputVector = Vector2.zero; // initialize the input vector - (0,0)
         if (Input.GetKey(KeyCode.W))
         {
-            Debug.Log("User's Input: W");
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            Debug.Log("User's Input: A");
+            inputVector += Vector2.up; // Up: (0,1)
         }
         if (Input.GetKey(KeyCode.S))
         {
-            Debug.Log("User's Input: S");
+            inputVector += Vector2.down; // Down: (0,-1)
         }
         if (Input.GetKey(KeyCode.D))
         {
-            Debug.Log("User's Input: D");
+            inputVector += Vector2.right; // Right: (1,0)
         }
-
+        if (Input.GetKey(KeyCode.A))
+        {
+            inputVector += Vector2.left; // Down: (-1,0)
+        }
+        
+        Debug.Log("Resultant Vector: " + inputVector);
     }
 }
