@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
+    public Rigidbody sphereRigidbody;
+    public float ballSpeed = 2f;    //  Variables to control the ball speed
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Debug.Log("Calling the Start method");
+        Debug.Log("Calling the Start method");  // variable to get Rigidbody
     }
 
     // Update is called once per frame
@@ -28,7 +30,12 @@ public class BallController : MonoBehaviour
         {
             inputVector += Vector2.left; // Down: (-1,0)
         }
+
+        Vector3 inputXZPlane = new Vector3(inputVector.x, 0, inputVector.y);  // Convert 2D vector (XY) to 3D vector (XZ)
+        // Debug.Log("Resultant Vector: " + inputVector);
+        // Debug.Log("Resultant 3D Vector: " + inputXZPlane);
         
-        Debug.Log("Resultant Vector: " + inputVector);
+        // sphereRigidbody.AddForce(inputXZPlane);
+        sphereRigidbody.AddForce(inputXZPlane * ballSpeed);   // Move the ball in accordance with ballSpeed.
     }
 }
